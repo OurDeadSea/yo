@@ -6,7 +6,7 @@
   Required arguments are:
   * token -- Authentication token
 
-  Options arguments are:
+  Options keywords are:
   * :batch_presence_aware -- Group presence change notices as presence_change_batch events when possible
   * :presence_sub -- Only deliver presence events when requested by subscription."
   ([token]
@@ -20,7 +20,7 @@
   Required arguments are:
   * token -- Authentication token
 
-  Options arguments are:
+  Options keywords are:
   * :batch_presence_aware -- Group presence change notices as presence_change_batch events when possible
   * :mpim_aware -- Returns MPIMs to the client in the API response
   * :no_latest -- Exclude latest timestamps for channels, groups, mpims, and ims

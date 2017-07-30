@@ -7,7 +7,7 @@
   * token -- Authentication token
   * name -- Reaction (emoji) name
 
-  Options arguments are:
+  Options keywords are:
   * :channel -- Channel where the message to add reaction to was posted
   * :file -- File to add reaction to
   * :file_comment -- File comment to add reaction to
@@ -23,7 +23,7 @@
   Required arguments are:
   * token -- Authentication token
 
-  Options arguments:
+  Options keywords are:
   * :channel -- Channel where the message to get reactions for was posted
   * :file -- File to get reactions for
   * :file_comment -- File comment to get reactions for
@@ -40,7 +40,7 @@
   Required arguments are:
   * token -- Authentication token
 
-  Options arguments are:
+  Options keywords are:
   * :count -- Number of items to return per page
   * :full -- If true always return the complete reaction list
   * :page -- Page number of results to return
@@ -57,7 +57,7 @@
   * token -- Authentication token
   * name -- Reaction (emoji) name
 
-  Options arguments are:
+  Options keywords are:
   * :channel -- Channel where the message to remove reaction from was posted
   * :file -- File to remove reaction from
   * :file_comment -- File comment to remove reaction from

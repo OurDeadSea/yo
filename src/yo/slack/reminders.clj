@@ -8,7 +8,7 @@
   * text -- The content of the reminder
   * time -- When this reminder should happen
 
-  Options arguments are:
+  Options keywords are:
   * :user -- The user who will receive the reminder."
   ([token text time]
    (add token text time {}))
