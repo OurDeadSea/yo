@@ -1,4 +1,5 @@
-(ns yo.slack.bots)
+(ns yo.slack.bots
+  (:require [yo.slack.core :as slack]))
 
 (defn info
   "This method returns information about a bot user.
@@ -11,4 +12,4 @@
   ([token]
    (info token {}))
   ([token opts]
-   :TODO))
+   (slack/request-get "bots.info" (conj opts {:token token}))))

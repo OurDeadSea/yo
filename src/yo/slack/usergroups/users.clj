@@ -1,4 +1,6 @@
-(ns yo.slack.usergroups.users)
+(ns yo.slack.usergroups.users
+  (:require [yo.slack.core :as slack])
+  (:refer-clojure :exclude [list update]))
 
 (defn list
   "This method returns a list of all users within a User Group.
@@ -12,7 +14,7 @@
   ([token usergroup]
    (list token usergroup {}))
   ([token usergroup opts]
-   :TODO))
+   (slack/request-get "usergroups.users.list" (conj opts {:token token :usergroup usergroup}))))
 
 (defn update
   "This method updates the list of users that belong to a User Group.
@@ -27,5 +29,5 @@
   ([token usergroup users]
    (update token usergroup users {}))
   ([token usergroup users opts]
-   :TODO))
-
+   (slack/request-get "usergroups.users.update"
+                      (conj opts {:token token :usergroup usergroup :users users}))))

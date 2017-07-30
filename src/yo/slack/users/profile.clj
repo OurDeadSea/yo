@@ -1,4 +1,6 @@
-(ns yo.slack.users.profile)
+(ns yo.slack.users.profile
+  (:require [yo.slack.core :as slack])
+  (:refer-clojure :exclude [get set]))
 
 (defn get
   "Use this method to retrieve a user's profile information.
@@ -12,7 +14,7 @@
   ([token]
    (get token {}))
   ([token opts]
-   :TODO))
+   (slack/request-get "users.profile.get" (conj opts {:token token}))))
 
 (defn set
   "Use this method to set a user's profile information, including name, email, current status, and other attributes.
@@ -28,5 +30,4 @@
   ([token]
    (set token {}))
   ([token opts]
-   :TODO))
-
+   (slack/request-get "users.profile.set" (conj opts {:token token}))))

@@ -1,4 +1,5 @@
-(ns yo.slack.rtm)
+(ns yo.slack.rtm
+  (:require [yo.slack.core :as slack]))
 
 (defn connect
   "This method begins a Real Time Messaging API session and reserves your application a specific URL with which to connect via websocket.
@@ -12,7 +13,7 @@
   ([token]
    (connect token {}))
   ([token opts]
-   :TODO))
+   (slack/request-get "rtm.connect" (conj opts {:token token}))))
 
 (defn start
   "This method begins a Real Time Messaging API session and reserves your application a specific URL with which to connect via websocket.
@@ -30,7 +31,4 @@
   ([token]
    (start token {}))
   ([token opts]
-   :TODO))
-
-
-
+   (slack/request-get "rtm.start" (conj opts {:token token}))))

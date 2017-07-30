@@ -1,4 +1,6 @@
-(ns yo.slack.channels)
+(ns yo.slack.channels
+  (:require [yo.slack.core :as slack])
+  (:refer-clojure :exclude [list]))
 
 (defn archive
   "This method archives a channel.
@@ -7,7 +9,7 @@
   * token -- Authentication token
   * channel -- Channel to archive"
   [token channel]
-  :TODO)
+  (slack/request-get "channels.archive" {:token token :channel channel}))
 
 (defn create
   "This method is used to create a channel.
@@ -21,7 +23,7 @@
   ([token name]
    (create token name {}))
   ([token name opts]
-   :TODO))
+   (slack/request-get "channels.create" (conj opts {:token token :name name}))))
 
 (defn history
   "This method returns a portion of message events from the specified public channel.
@@ -39,7 +41,7 @@
   ([token channel]
    (history token channel {}))
   ([token channel opts]
-   :TODO))
+   (slack/request-get "channels.history" (conj opts {:token token :channel channel}))))
 
 (defn info
   "This method returns information about a team channel.
@@ -48,7 +50,7 @@
   * token -- Authentication token
   * channel -- Channel to get info on"
   [token channel]
-  :TODO)
+  (slack/request-get "channels.info" {:token token :channel channel}))
 
 (defn invite
   "This method is used to invite a user to a channel.
@@ -58,7 +60,7 @@
   * channel -- Channel to invite user to
   * user -- User to invite to channel"
   [token channel user]
-  :TODO)
+  (slack/request-get "channels.invite" {:token token :channel channel :user user}))
 
 (defn join
   "This method is used to join a channel. If the channel does not exist, it is created.
@@ -72,7 +74,7 @@
   ([token name]
    (join token name {}))
   ([token name opts]
-   :TODO))
+   (slack/request-get "channels.join" (conj opts {:token token :name name}))))
 
 (defn kick
   "This method allows a user to remove another member from a team channel.
@@ -82,7 +84,7 @@
   * channel -- Channel to remove user from
   * user -- User to remove from channel"
   [token channel user]
-  :TODO)
+  (slack/request-get "channels.kick" {:token token :channel channel :user user}))
 
 (defn leave
   "This method is used to leave a channel.
@@ -91,7 +93,7 @@
   * token -- Authentication token
   * channel -- Channel to leave"
   [token channel]
-  :TODO)
+  (slack/request-get "channels.leave" {:token token :channel channel}))
 
 (defn list
   "This method returns a list of all channels in the team.
@@ -105,7 +107,7 @@
   ([token]
    (list token {}))
   ([token opts]
-   :TODO))
+   (slack/request-get "channels.list" (conj opts {:token token}))))
 
 (defn mark
   "This method moves the read cursor in a channel.
@@ -115,7 +117,7 @@
   * channel -- Channel to set reading cursor in
   * ts -- Timestamp of the most recently seen message"
   [token channel ts]
-  :TODO)
+  (slack/request-get "channels.mark" {:token token :channel channel :ts ts}))
 
 
 (defn rename
@@ -131,7 +133,7 @@
   ([token channel name]
    (rename token channel name {}))
   ([token channel name opts]
-   :TODO))
+   (slack/request-get "channels.rename" (conj opts {:token token :channel channel :name name}))))
 
 (defn replies
   "This method returns an entire thread (a message plus all the messages in reply to it).
@@ -141,7 +143,7 @@
   * channel -- Channel to fetch thread from
   * thread_ts -- Unique identifier of a thread's parent message"
   [token channel thread-ts]
-  :TODO)
+  (slack/request-get "channels.replies" {:token token :channel channel :thread_ts thread-ts}))
 
 (defn set-purpose
   "This method is used to change the purpose of a channel. The calling user must be a member of the channel.
@@ -151,7 +153,7 @@
   * channel -- Channel to set the purpose of
   * purpose -- The new purpose"
   [token channel purpose]
-  :TODO)
+  (slack/request-get "channels.setPurpose" {:token token :channel channel :purpose purpose}))
 
 (defn set-topic
   "This method is used to change the topic of a channel. The calling user must be a member of the channel.
@@ -161,7 +163,7 @@
   * channel -- Channel to set the topic of
   * topic -- The new topic"
   [token channel topic]
-  :TODO)
+  (slack/request-get "channels.setTopic" {:token token :channel channel :topic topic}))
 
 (defn unarchive
   "This method unarchives a channel. The calling user is added to the channel.
@@ -170,4 +172,4 @@
   * token -- Authentication token
   * channel -- Channel to unarchive"
   [token channel]
-  :TODO)
+  (slack/request-get "channels.unarchive" {:token token :channel channel}))

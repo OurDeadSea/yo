@@ -1,4 +1,5 @@
-(ns yo.slack.search)
+(ns yo.slack.search
+  (:require [yo.slack.core :as slack]))
 
 (defn all
   "This method allows users and applications to search both messages and files in a single call.
@@ -16,7 +17,7 @@
   ([token query]
    (all token query {}))
   ([token query opts]
-   :TODO))
+   (slack/request-get "search.all" (conj opts {:token token :query query}))))
 
 (defn files
   "This method returns files matching a search query.
@@ -34,7 +35,7 @@
   ([token query]
    (files token query {}))
   ([token query opts]
-   :TODO))
+   (slack/request-get "search.files" (conj opts {:token token :query query}))))
 
 (defn messages
   "This method returns messages matching search query.
@@ -52,7 +53,4 @@
   ([token query]
    (messages token query {}))
   ([token query opts]
-   :TODO))
-
-
-
+   (slack/request-get "search.messages" (conj opts {:token token :query query}))))

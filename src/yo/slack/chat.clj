@@ -1,4 +1,6 @@
-(ns yo.slack.chat)
+(ns yo.slack.chat
+  (:require [yo.slack.core :as slack])
+  (:refer-clojure :exclude [update]))
 
 (defn delete
   "This method deletes a message from a channel.
@@ -13,7 +15,7 @@
   ([token channel ts]
    (delete token channel ts {}))
   ([token channel ts opts]
-   :TODO))
+   (slack/request-get "chat.delete" (conj opts {:token token :channel channel :ts ts}))))
 
 (defn me-message
   "This method sends a me message to a channel from the calling user.
@@ -23,7 +25,7 @@
   * channel -- Channel to send message to
   * text -- Text of the message to send"
   [token channel text]
-  :TODO)
+  (slack/request-get "chat.meMessage" {:token token :channel channel :text text}))
 
 (defn post-message
   "This method posts a message to a public channel, private channel, or direct message/IM channel.
@@ -48,7 +50,7 @@
   ([token channel text]
    (post-message token channel text {}))
   ([token channel text opts]
-   :TODO))
+   (slack/request-get "chat.postMessage" (conj opts {:token token :channel channel :text text}))))
 
 (defn unfurl
   "This method attaches Slack app unfurl behavior to a specified and relevant message.
@@ -64,7 +66,7 @@
   ([token channel ts unfurls]
    (unfurl token channel ts unfurls {}))
   ([token channel ts unfurls opts]
-   :TODO))
+   (slack/request-get "chat.unfurl" (conj opts {:token token :channel channel :ts ts :unfurls unfurls}))))
 
 (defn update
   "This method updates a message in a channel.
@@ -83,4 +85,4 @@
   ([token channel text ts]
    (update token channel text ts {}))
   ([token channel text ts opts]
-   :TODO))
+   (slack/request-get "chat.update" (conj opts {:token token :channel channel :text text :ts ts}))))

@@ -1,4 +1,6 @@
-(ns yo.slack.mpim)
+(ns yo.slack.mpim
+  (:require [yo.slack.core :as slack])
+  (:refer-clojure :exclude [list]))
 
 (defn close
   "This method closes a multiparty direct message channel.
@@ -7,7 +9,7 @@
   * token -- Authentication token
   * channel -- MPIM to close"
   [token channel]
-  :TODO)
+  (slack/request-get "mpim.close" {:token token :channel channel}))
 
 (defn history
   "This method returns a portion of messages/events from the specified multiparty direct message channel. To read the entire history for a multiparty direct message, call the method with no latest or oldest arguments, and then continue paging using the instructions below.
@@ -25,7 +27,7 @@
   ([token channel]
    (history token channel {}))
   ([token channel opts]
-   :TODO))
+   (slack/request-get "mpim.history" (conj opts {:token token :channel channel}))))
 
 (defn list
   "This method returns a list of all multiparty direct message channels that the user has.
@@ -33,7 +35,7 @@
   Required arguments are:
   * token -- Authentication token."
   [token]
-  :TODO)
+  (slack/request-get "mpim.list" {:token token}))
 
 (defn mark
   "This method moves the read cursor in a multiparty direct message channel.
@@ -43,7 +45,7 @@
   * channel -- multiparty direct message channel to set reading cursor in
   * ts -- Timestamp of the most recently seen message"
   [token channel ts]
-  :TODO)
+  (slack/request-get "mpim.mark" {:token token :channel channel :ts ts}))
 
 (defn open
   "This method opens a multiparty direct message.
@@ -52,7 +54,7 @@
   * token -- Authentication token
   * users -- Comma separated lists of users."
   [token users]
-  :TODO)
+  (slack/request-get "mpim.open" {:token token :users users}))
 
 (defn replies
   "This method returns an entire thread (a message plus all the messages in reply to it).
@@ -61,10 +63,5 @@
   * token -- Authentication token
   * channel -- Multiparity direct message channel to fetch thread from.
   * thread_ts -- Unique identifier of a thread's parent message."
-  [token channel thread_ts]
-  :TODO)
-
-
-
-
-
+  [token channel thread-ts]
+  (slack/request-get "mpim.replies" {:token token :channel channel :thread_ts thread-ts}))

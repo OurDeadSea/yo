@@ -1,4 +1,6 @@
-(ns yo.slack.auth)
+(ns yo.slack.auth
+  (:require [yo.slack.core :as slack])
+  (:refer-clojure :exclude [test]))
 
 (defn revoke
   "This method revokes an access token. Use it when you no longer need a token.
@@ -11,7 +13,7 @@
   ([token]
    (revoke token {}))
   ([token opts]
-   :TODO))
+   (slack/request-get "auth.revoke" (conj opts {:token token}))))
 
 
 (defn test
@@ -20,4 +22,4 @@
   Required arguments are:
   * token -- Authentication token"
   [token]
-  :TODO)
+  (slack/request-get "auth.test" {:token token}))

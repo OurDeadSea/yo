@@ -1,4 +1,6 @@
-(ns yo.slack.stars)
+(ns yo.slack.stars
+  (:require [yo.slack.core :as slack])
+  (:refer-clojure :exclude [list remove]))
 
 (defn add
   "This method adds a star to an item (message, file, file comment, channel, private group, or DM) on behalf of the authenticated user.
@@ -14,7 +16,7 @@
   ([token]
    (add token {}))
   ([token opts]
-   :TODO))
+   (slack/request-get "stars.add" (conj opts {:token token}))))
 
 (defn list
   "This method lists the items tarred by the authed user.
@@ -28,7 +30,7 @@
   ([token]
    (list token {}))
   ([token opts]
-   :TODO))
+   (slack/request-get "stars.list" (conj opts {:token token}))))
 
 (defn remove
   "This method removes a star from an item (message, file, file comment, channel, private group, or DM) on behalf of the authenticated user.
@@ -44,6 +46,4 @@
   ([token]
    (remove token {}))
   ([token opts]
-   :TODO))
-
-
+   (slack/request-get "stars.remove" (conj opts {:token token}))))

@@ -1,4 +1,6 @@
-(ns yo.slack.files)
+(ns yo.slack.files
+  (:require [yo.slack.core :as slack])
+  (:refer-clojure :exclude [list]))
 
 (defn delete
   "This method deletes a file from your team.
@@ -7,7 +9,7 @@
   * token -- Authentication token
   * file -- ID of file to delete"
   [token file]
-  :TODO)
+  (slack/request-get "files.delete" {:token token :file file}))
 
 (defn info
   "This method returns information about a file in your team.
@@ -22,7 +24,7 @@
   ([token file]
    (info token file {}))
   ([token file opts]
-   :TODO))
+   (slack/request-get "files.info" (conj opts {:token token :file file}))))
 
 (defn list
   "This method returns a list of files within the team. It can be filtered and sliced in various ways.
@@ -41,7 +43,7 @@
   ([token]
    (list token {}))
   ([token opts]
-   :TODO))
+   (slack/request-get "files.list" (conj opts {:token token}))))
 
 (defn revoke-public-url
   "This method disables public/external sharing for a file.
@@ -50,7 +52,7 @@
   * token -- Authentication token
   * file -- File to revoke"
   [token file]
-  :TODO)
+  (slack/request-get "files.revokePublicURL" {:token token :file file}))
 
 
 (defn shared-public-url
@@ -60,7 +62,7 @@
   * token -- Authentication token
   * file -- File to share"
   [token file]
-  :TODO)
+  (slack/request-get "files.sharedPublicURL" {:token token :file file}))
 
 (defn upload
   "This method allows you to create or upload an existing file.
@@ -79,4 +81,4 @@
   ([token]
    (upload token))
   ([token opts]
-   :TODO))
+   (slack/request-get "files.upload" (conj opts {:token token}))))

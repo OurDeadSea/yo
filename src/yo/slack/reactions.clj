@@ -1,4 +1,6 @@
-(ns yo.slack.reactions)
+(ns yo.slack.reactions
+  (:require [yo.slack.core :as slack])
+  (:refer-clojure :exclude [get list remove]))
 
 (defn add
   "This method adds a reaction (emoji) to an item (file, file comment, channelmessage, group message, or direct message). One of file, file_comment, or the combination of channel and timestamp must be specified.
@@ -15,7 +17,7 @@
   ([token name]
    (add token name {}))
   ([token name opts]
-   :TODO))
+   (slack/request-get "reactions.add" (conj opts {:token token :name name}))))
 
 (defn get
   "This method returns a list of all reactions for a single item (file, file comment, channel message, group message, or direct message).
@@ -32,7 +34,7 @@
   ([token]
    (get token {}))
   ([token opts]
-   :TODO))
+   (slack/request-get "reactions.get" (conj opts {:token token}))))
 
 (defn list
   "This method returns a list of all items (file, file comment, channel message, group message, or direct message) reacted to by a user.
@@ -48,7 +50,7 @@
   ([token]
    (get token {}))
   ([token opts]
-   :TODO))
+   (slack/request-get "reactions.list" (conj opts {:token token}))))
 
 (defn remove
   "This method removes a reaction (emoji) from an item (file, file comment, channel message, group message, or direct message). One of file, file_comment, or the combination of channel and timestamp must be specified.
@@ -65,7 +67,4 @@
   ([token name]
    (remove token name {}))
   ([token name opts]
-   :TODO))
-
-
-
+   (slack/request-get "reactions.remove" (conj opts {:token token :name name}))))

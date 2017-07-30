@@ -1,4 +1,6 @@
-(ns yo.slack.usergroups)
+(ns yo.slack.usergroups
+  (:require [yo.slack.core :as slack])
+  (:refer-clojure :exclude [list update]))
 
 (defn create
   "This method is used to create a User Group.
@@ -15,7 +17,7 @@
   ([token name]
    (create token name {}))
   ([token name opts]
-   :TODO))
+   (slack/request-get "usergroups.create" (conj opts {:token token :name name}))))
 
 (defn disable
   "This method disables an existing User Group.
@@ -29,7 +31,7 @@
   ([token usergroup]
    (disable token usergroup {}))
   ([token usergroup opts]
-   :TODO))
+   (slack/request-get "usergroups.disable" (conj opts {:token token :usergroup usergroup}))))
 
 (defn enable
   "This method enables a User Group wich was previously disabled.
@@ -43,7 +45,7 @@
   ([token usergroup]
    (enable token usergroup {}))
   ([token usergroup opts]
-   :TODO))
+   (slack/request-get "usergroups.enable" (conj opts {:token token :usergroup usergroup}))))
 
 (defn list
   "This method returns a list of all User Groups in the team. This can optionally include disabled User Groups.
@@ -58,7 +60,7 @@
   ([token]
    (list token {}))
   ([token opts]
-   :TODO))
+   (slack/request-get "usergroups.list" (conj opts {:token token}))))
 
 (defn update
   "This method updates the properties of an existing User Group.
@@ -76,9 +78,4 @@
   ([token usergroup]
    (update token usergroup {}))
   ([token usergroup opts]
-   :TODO))
-
-
-  
-  
-
+   (slack/request-get "usergroups.update" (conj opts {:token token :usergroup usergroup}))))

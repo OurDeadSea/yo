@@ -1,21 +1,23 @@
-(ns yo.slack.users)
+(ns yo.slack.users
+  (:require [yo.slack.core :as slack])
+  (:refer-clojure :exclude [identity list]))
 
-(defn deletePhoto
+(defn delete-photo
   "This method allows the user to delete their profile image. It will clear whatever image is currently set.
 
   Required arguments are:
   * token -- Authentication token."
   [token]
-  :TODO)
+  (slack/request-get "users.deletePhoto" {:token token}))
 
-(defn getPresence
+(defn get-presence
   "This method lets you find out information about a user's presence.
 
   Required arguments are:
   * token -- Authentication token
   * user -- User to get presence info on."
   [token user]
-  :TODO)
+  (slack/request-get "users.getPresence" {:token token :user user}))
 
 (defn identity
   "After your Slack app is awarded an identity token through Sign in with Slack, use this method to retrieve a user's identity.
@@ -23,7 +25,7 @@
   Required arguments are:
   * token -- Authentication token."
   [token]
-  :TODO)
+  (slack/request-get "users.identity" {:token token}))
 
 (defn info
   "This method returns information about a team member.
@@ -32,7 +34,7 @@
   * token -- Authentication token
   * user -- User to get info on"
   [token user]
-  :TODO)
+  (slack/request-get "users.info" {:token token :user user}))
 
 (defn list
   "This method returns a list of all users in the team. This includes deleted/deactivated users.
@@ -47,17 +49,17 @@
   ([token]
    (list token {}))
   ([token opts]
-   :TODO))
+   (slack/request-get "users.list" (conj opts {:token token}))))
 
-(defn setActive
+(defn set-active
   "This method lets the slack messaging server know that the authenticated user is currently active.
 
   Required arguments are:
   * token -- Authentication token."
   [token]
-  :TODO)
+  (slack/request-get "users.setActive" {:token token}))
 
-(defn setPhoto
+(defn set-photo
   "This method allows the user to set their profile image.
 
   Required arguments are:
@@ -69,20 +71,15 @@
   * :crop_x -- X coordinate of top-left corner of crop box
   * :crop_y -- Y coordinate of top-left corner oc crop bpx."
   ([token image]
-   (setPhoto token image {}))
+   (set-photo token image {}))
   ([token image opts]
-   :TODO))
+   (slack/request-get "users.setPhoto" (conj opts {:token token :image image}))))
 
-(defn setPresence
+(defn set-presence
   "This method lets you set the calling user's manual presence.
 
   Required arguments are:
   * token -- Authentication token
   * presence -- Either auto or away."
   [token presence]
-  :TODO)
-
-
-
-
-
+  (slack/request-get "users.setPresence" {:token token :presence presence}))

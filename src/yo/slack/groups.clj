@@ -1,4 +1,6 @@
-(ns yo.slack.groups)
+(ns yo.slack.groups
+  (:require [yo.slack.core :as slack])
+  (:refer-clojure :exclude [list]))
 
 (defn archive
   "This method archives a private channel.
@@ -7,7 +9,7 @@
   * token -- Authentication token
   * channel -- Private channel to archive"
   [token channel]
-  :TODO)
+  (slack/request-get "groups.archive" {:token token :channel channel}))
 
 (defn close
   "This method closes a private channel.
@@ -16,7 +18,7 @@
   * token -- Authentication token
   * channel -- Private channel to close"
   [token channel]
-  :TODO)
+  (slack/request-get "groups.close" {:token token :channel channel}))
 
 (defn create
   "This method creates a private channel.
@@ -30,7 +32,7 @@
   ([token name]
    (create token name {}))
   ([token name opts]
-   :TODO))
+   (slack/request-get "groups.create" (conj opts {:token token :name name}))))
 
 (defn create-child
   "This method takes an existing private channel and performs the following steps:
@@ -44,7 +46,7 @@
   * token -- Authentication token
   * channel -- Private channel to clone and archive"
   [token channel]
-  :TODO)
+  (slack/request-get "groups.createChild" {:token token :channel channel}))
 
 (defn history
   "This method returns a portion of messages/events from the specified private channel.
@@ -62,7 +64,7 @@
   ([token channel]
    (history token channel {}))
   ([token channel opts]
-   :TODO))
+   (slack/request-get "groups.history" (conj opts {:token token :channel channel}))) )
 
 (defn info
   "This method returns information about a private channel.
@@ -81,7 +83,7 @@
   * channel -- Private channel to invite user to
   * user -- User to invite"
   [token channel user]
-  :TODO)
+  (slack/request-get "groups.invite" {:token token :channel channel :user user}))
 
 (defn kick
   "This method allows a user to remove another member from a private channel.
@@ -91,7 +93,7 @@
   * channel -- Private channel to remove user from
   * user -- User to remove from private channel"
   [token channel user]
-  :TODO)
+  (slack/request-get "groups.kick" {:token token :channel channel :user user}))
 
 (defn leave
   "This method is used to leave a private channel.
@@ -100,7 +102,7 @@
   * token -- Authentication token
   * channel -- Private channel to leave"
   [token channel]
-  :TODO)
+  (slack/request-get "groups.leave" {:token token :channel channel}))
 
 (defn list
   "This method returns a list of private channels in the team that the caller is in and archived groups that the caller was in.
@@ -114,7 +116,7 @@
   ([token]
    (list token {}))
   ([token opts]
-   :TODO))
+   (slack/request-get "groups.list" (conj opts {:token token}))))
 
 (defn mark
   "This method moves the read cursor in a private channel.
@@ -124,7 +126,7 @@
   * channel -- Private channel to set reading cursor in
   * ts -- Timestamp of the most recently seen message"
   [token channel ts]
-  :TODO)
+  (slack/request-get "groups.mark" {:token token :channel channel :ts ts}))
 
 (defn open
   "This method opens a private channel.
@@ -133,7 +135,7 @@
   * token -- Authentication token
   * channel -- Private channel to open"
   [token channel]
-  :TODO)
+  (slack/request-get "groups.open" {:token token :channel channel}))
 
 (defn rename
   "This method renames a private channel.
@@ -148,7 +150,7 @@
   ([token channel name]
    (rename token channel name {}))
   ([token channel name opts]
-   :TODO))
+   (slack/request-get "groups.rename" (conj opts {:token token :channel channel :name name}))))
 
 (defn replies
   "This method returns an entire thread (a message plus all the messages in reply to it).
@@ -158,7 +160,7 @@
   * channel -- Private channel to fetch thread from
   * thread-ts -- Unique identifier of a thread's parent message"
   [token channel thread-ts]
-  :TODO)
+  (slack/request-get "groups.replies" {:token token :channel channel :thread_ts thread-ts}))
 
 (defn set-purpose
   "This method is used to change the purpose of a private channel.
@@ -168,7 +170,7 @@
   * channel -- Private channel to set the purpose of
   * purpose -- The new purpose"
   [token channel purpose]
-  :TODO)
+  (slack/request-get "groups.setPurpose" {:token token :channel channel :purpose purpose}))
 
 (defn set-topic
   "This method is used to change the topic of a private channel. 
@@ -178,7 +180,7 @@
   * channel -- Private channel to set the topic of
   * topic -- The new topic"
   [token channel topic]
-  :TODO)
+  (slack/request-get "groups.setTopic" {:token token :channel channel :topic topic}))
 
 (defn unarchive
   "This method unarchives a private channel.
@@ -187,4 +189,4 @@
   * token -- Authentication token
   * channel -- Private channel to unarchive"
   [token channel]
-  :TODO)
+  (slack/request-get "groups.unarchive" {:token token :channel channel}))

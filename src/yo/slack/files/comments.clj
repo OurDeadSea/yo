@@ -1,4 +1,5 @@
-(ns yo.slack.files.comments)
+(ns yo.slack.files.comments
+  (:require [yo.slack.core :as slack]))
 
 (defn add
   "Add a comment to an existing file.
@@ -8,7 +9,7 @@
   * comment -- Text of the comment to add
   * file -- File to add a comment to"
   [token comment file]
-  :TODO)
+  (slack/request-get "files.comments.add" {:token token :comment comment :file file}))
 
 (defn delete
   "Delete an existing comment on a file.
@@ -18,7 +19,7 @@
   * file -- File to delete a comment from
   * id -- The comment to delete"
   [token file id]
-  :TODO)
+  (slack/request-get "files.comments.delete" {:token token :file file :id id}))
 
 
 (defn edit
@@ -30,4 +31,4 @@
   * file -- File containing the comment to edit
   * id -- The comment to edit"
   [token comment file id]
-  :TODO)
+  (slack/request-get "files.comments.edit" {:token token :comment comment :file file :id id}))

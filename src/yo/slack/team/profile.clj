@@ -1,4 +1,6 @@
-(ns yo.slack.team.profile)
+(ns yo.slack.team.profile
+  (:require [yo.slack.core :as slack])
+  (:refer-clojure :exclude [get]))
 
 (defn get
   "This method is used to get the profile field definitions for this team
@@ -11,5 +13,4 @@
   ([token]
    (get token {}))
   ([token opts]
-   :TODO))
-
+   (slack/request-get "team.profile.get" (conj opts {:token token}))))

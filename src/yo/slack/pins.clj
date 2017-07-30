@@ -1,4 +1,6 @@
-(ns yo.slack.pins)
+(ns yo.slack.pins
+  (:require [yo.slack.core :as slack])
+  (:refer-clojure :exclude [get list remove]))
 
 (defn add
   "This method adds a reaction (emoji) to an item (file, file comment, channel message, group message, or direct message).
@@ -15,7 +17,7 @@
   ([token name]
    (add token name {}))
   ([token name opts]
-   :TODO))
+   (slack/request-get "pins.add" (conj opts {:token token :name name}))))
 
 (defn get
   "This method returns a list of all reactions for a single item (file, file comment, channel message, group message, or direct message).
@@ -30,9 +32,9 @@
   * :full -- If true always return the complete reaction list
   * :timestamp -- Timestamp of the message to get reactions for"
   ([token]
-   (get token opts))
+   (get token {}))
   ([token opts]
-   :TODO))
+   (slack/request-get "pins.get" (conj opts {:token token}))))
 
 (defn list
   "This method returns a list of all items (file, file comment, channel message, group message, or direct message) reacted to by a user.
@@ -48,7 +50,7 @@
   ([token]
    (list token {}))
   ([token opts]
-   :TODO))
+   (slack/request-get "pins.list" (conj opts {:token token}))))
 
 (defn remove
   "This method removes a reaction (emoji) from an item (file, file comment, channel message, group message, or direct message).
@@ -65,4 +67,4 @@
   ([token name]
    (remove token name {}))
   ([token name opts]
-   :TODO))
+   (slack/request-get "pins.remove" (conj opts {:token token :name name}))))
