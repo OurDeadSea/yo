@@ -8,7 +8,7 @@
   Required arguments are:
   * token -- Authentication token
   * name -- Reaction (emoji) name
-  
+
   Options keywords are:
   * :channel -- Channel where the message to add reaction to was posted
   * :file -- File to add reaction to
@@ -21,10 +21,10 @@
 
 (defn get
   "This method returns a list of all reactions for a single item (file, file comment, channel message, group message, or direct message).
-  
+
   Required arguments are:
   * token -- Authentication token
-  
+
   Options keywords are:
   * :channel -- Channel where the message to get reactions for was posted
   * :file -- File to get reactions for
@@ -41,7 +41,7 @@
 
   Required arguments are:
   * token -- Authentication token
-  
+
   Options keywords are:
   * :count -- Number of items to return per page
   * :full -- If true always return the complete reaction list
@@ -54,11 +54,11 @@
 
 (defn remove
   "This method removes a reaction (emoji) from an item (file, file comment, channel message, group message, or direct message).
-  
+
   Required arguments are:
   * token -- Authentication token
   * name -- Reaction (emoji) name
-  
+
   Options keywords are:
   * :channel -- Channel where the message to remove reaction from was posted
   * :file -- File to remove reaction from

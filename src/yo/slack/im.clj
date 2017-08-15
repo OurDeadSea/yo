@@ -17,7 +17,7 @@
   Required arguments are:
   * token -- Authentication token
   * channel -- Direct message channel to fetch history for
-  
+
   Options keywords are:
   * :count -- Number of messages to return, between 1 and 1000
   * :inclusive -- Include messages with latest or oldest timestamp in results
@@ -53,7 +53,7 @@
   Required arguments are:
   * token -- Authentication token
   * user -- User to open a direct message channel with
-  
+
   Options keywords are:
   * :return_im -- Boolean, indicates you want the full IM channel definition in the response"
   ([token user]

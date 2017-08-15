@@ -22,7 +22,7 @@
 
   Required arguments are:
   * token -- Authentication token
-  
+
   Options keywords are:
   * :user -- User to fetch status for (defaults to current user)"
   ([token]
@@ -44,7 +44,7 @@
 
   Required arguments are:
   * token -- Authentication token
-  
+
   Options keywords are:
   * :users -- Comma-separated list of users to fetch Do Not Disturb status for"
   ([token]

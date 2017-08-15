@@ -31,7 +31,7 @@
   Required arguments are:
   * token -- Authentication token
   * channel -- Channel to fetch history for
-  
+
   Options keywords are:
   * :count -- Number of messages to return, between 1 and 1000
   * :inclusive -- Include messages with latest or oldest timestamp in results
@@ -45,7 +45,7 @@
 
 (defn info
   "This method returns information about a team channel.
-  
+
   Required arguments are:
   * token -- Authentication token
   * channel -- Channel to get info on"
@@ -64,7 +64,7 @@
 
 (defn join
   "This method is used to join a channel. If the channel does not exist, it is created.
-  
+
   Required arguments are:
   * token -- Authentication token
   * name -- Name of channel to join

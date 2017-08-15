@@ -36,7 +36,7 @@
 
 (defn perform-http-get
   "Performs an HTTP GET request.
-  
+
   Returns json on success and nil on error."
   [url params]
   (let [response (http/get url {:query-params params})
@@ -47,7 +47,7 @@
 
 (defn perform-http-post
   "Performs an HTTP POST request.
-  
+
   Returns json response."
   [url params]
   (let [response (http/post url {:form-params params})

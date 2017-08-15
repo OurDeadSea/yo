@@ -34,7 +34,7 @@
   * token -- Authentication token
   * channel -- Channel, private group, or IM channel to send message to
   * text -- Text of the message to send
-  
+
   Options keywords are:
   * :as_user -- Pass true to post the message as the authed user, instead of as a bot
   * :attachments -- Structured message attachments
@@ -76,7 +76,7 @@
   * channel -- Channel containing the message to be updated
   * text -- New text for the message
   * ts -- Timestamp of the message to be updated
-  
+
   Options keywords are:
   * :as_user -- Pass true to update the message as the authed user
   * :attachments -- Structured message attachments

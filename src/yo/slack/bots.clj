@@ -6,7 +6,7 @@
 
   Required arguments are:
   * token -- Authentication token
-  
+
   Options keywords are:
   * :bot -- Bot user to get info on"
   ([token]

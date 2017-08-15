@@ -17,7 +17,7 @@
   Required arguments are:
   * token -- Authentication token
   * file -- Specify a file by providing its ID
-  
+
   Options keywords are:
   * :count -- Number of items to return per page
   * :page -- Page number of results to return"
@@ -31,7 +31,7 @@
 
   Required arguments are:
   * token -- Authentication token
-  
+
   Options keywords are:
   * :channel -- Filter files appearing in a specific channel, indicated by its ID
   * :count -- Number of items to return per page

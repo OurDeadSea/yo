@@ -41,7 +41,7 @@
   - Archives the existing private channel.
   - Creates a new private channel with the name of the existing private channel.
   - Adds all members of the existing private channel to the new private channel.
-  
+
   Required arguments are:
   * token -- Authentication token
   * channel -- Private channel to clone and archive"
@@ -54,7 +54,7 @@
   Required arguments are:
   * token -- Authentication token
   * channel -- Private channel to fetch history for
-  
+
   Options keywords are:
   * :count -- Number of messages to return, between 1 and 1000
   * :inclusive -- Include messages with latest or oldest timestamp in results
@@ -77,7 +77,7 @@
 
 (defn invite
   "This method is used to invite a user to a private channel.
-  
+
   Required arguments are:
   * token -- Authentication token
   * channel -- Private channel to invite user to
@@ -106,10 +106,10 @@
 
 (defn list
   "This method returns a list of private channels in the team that the caller is in and archived groups that the caller was in.
-  
+
   Required arguments are:
   * token -- Authentication token
-  
+
   Options keywords are:
   * :exclude_archived -- Don't retuen archived private channels
   * :exclude_members -- Exclude the members from each group"
@@ -130,7 +130,7 @@
 
 (defn open
   "This method opens a private channel.
-  
+
   Required arguments are:
   * token -- Authentication token
   * channel -- Private channel to open"
@@ -144,7 +144,7 @@
   * token -- Authentication token
   * channel -- Private channel to rename
   * name -- New name for private channel
-  
+
   Options keywords are:
   * :validate -- Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria"
   ([token channel name]
@@ -173,7 +173,7 @@
   (slack/request-get "groups.setPurpose" {:token token :channel channel :purpose purpose}))
 
 (defn set-topic
-  "This method is used to change the topic of a private channel. 
+  "This method is used to change the topic of a private channel.
 
   Required arguments are:
   * token -- Authentication token
