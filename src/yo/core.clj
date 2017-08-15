@@ -24,10 +24,14 @@
             [yo.slack.usergroups :as usergroups]
             [yo.slack.usergroups.users :as usergroups.users]
             [yo.slack.users :as users]
-            [yo.slack.users.profile :as users.profile])
+            [yo.slack.users.profile :as users.profile]
+            [environ.core :refer [env]])
   (:gen-class))
+
+(def oauth-token     (env :oauth-token))
+(def oauth-bot-token (env :bot-oauth-token))
 
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
-  (println "Called with these arguments: " args))
+  nil)

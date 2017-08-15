@@ -9,7 +9,15 @@
                  [org.clojure/core.async "0.3.443"]
                  [org.clojure/core.logic "0.8.11"]
                  [clj-http "3.6.1"]
-                 [stylefruits/gniazdo "1.0.1"]]
+                 [stylefruits/gniazdo "1.0.1"]
+                 [environ "1.1.0"]]
+  :plugins [[lein-environ "1.1.0"]]
   :main ^:skip-aot yo.core
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}})
+  :profiles
+  {:uberjar {:aot :all}
+   :dev     [:profiles/dev]
+   :test    [:profiles/test]
+
+   :profiles/dev  {}
+   :profiles/test {}})
