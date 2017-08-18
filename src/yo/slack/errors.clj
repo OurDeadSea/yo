@@ -52,7 +52,9 @@
   "Documentation not available."
   "not_allowed_token_type")
 
-
+(def bot-not-found
+  "Value passed for `bot` was invalid."
+  "bot_not_found")
 
 (def descriptions
   "What each Slack API error message means."
@@ -91,4 +93,7 @@
 
    not-allowed-token-type
    "Documentation not available."
+
+   bot-not-found
+   "Value passed for `bot` was invalid."
    })
