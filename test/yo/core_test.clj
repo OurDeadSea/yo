@@ -2,6 +2,6 @@
   (:require [clojure.test :refer :all]
             [yo.core :refer :all]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest main-test
+  (testing "The main procedure should always return nil"
+    (is (= (-main) nil))))

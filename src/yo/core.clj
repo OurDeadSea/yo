@@ -32,6 +32,6 @@
 (def oauth-bot-token (env :bot-oauth-token))
 
 (defn -main
-  "I don't do a whole lot ... yet."
+  "Do nothing, return nil"
   [& args]
   nil)
