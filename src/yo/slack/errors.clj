@@ -32,6 +32,28 @@
   "The method was called via a `POST` request, but the `POST` data was either missing or truncated."
   "request_timeout")
 
+(def not-authed
+  "No authentication token provided."
+  "not_authed")
+
+(def invalid-auth
+  "Invalid authentication token."
+  "invalid_auth")
+
+(def account-inactive
+  "Authentication token is for a deleted user or team."
+  "account_inactive")
+
+(def user-is-bot
+  "This method cannot be called by a bot user."
+  "user_is_bot")
+
+(def not-allowed-token-type
+  "Documentation not available."
+  "not_allowed_token_type")
+
+
+
 (def descriptions
   "What each Slack API error message means."
   {invalid-arg-name
@@ -49,10 +71,24 @@
    invalid-post-type
    "The method was called via a `POST` request, but the specified `Content-Type` was invalid. Valid types are: `application/x-www-form-urlencoded` `multipart/form-data` `text/plain`."
 
+   missing-post-type
+   "The method was called via a `POST` request and included a data payload, but the request did not include a `Content-Type` header."
+
    team-added-to-org
    "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
 
    request-timeout
    "The method was called via a `POST` request, but the `POST` data was either missing or truncated."
-   
+
+   not-authed
+   "No authentication token provided."
+
+   invalid-auth
+   "Invalid authentication token."
+
+   account-inactive
+   "Authentication token is for a deleted user or team."
+
+   not-allowed-token-type
+   "Documentation not available."
    })
