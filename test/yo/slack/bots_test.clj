@@ -15,7 +15,7 @@
              {:ok true})))
     (testing "Invalid calls"
       (is (= (bots/info user-token {:bot "not-a-bot"})
-             {:ok false :error "bot_not_found"}))
+             {:ok false :error errors/bot-not-found}))
       (is (= (bots/info bot-token)
              (bots/info bot-token {:bot ""})
              {:ok false :error errors/user-is-bot})))))
